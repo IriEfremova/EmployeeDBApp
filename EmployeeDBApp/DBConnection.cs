@@ -197,8 +197,48 @@ namespace EmployeeDBApp
             return res;
         }
 
-        async public void CreateStoredProcedure()
+        async public Task<string> CreateDB()
         {
+            string res = string.Empty;
+            string sp_CreateDB = "CREATE DATABASE EmployeeDB";
+            try
+            {
+                SqlCommand command = new (sp_CreateDB, connection);
+                await command.ExecuteNonQueryAsync();
+
+                res = "Database is created.\n";
+            }
+            catch (SqlException ex)
+            {
+                res = "Error when create Database. " + ex.Message + "\n";
+            }
+            return res;
+        }
+
+        async public Task<string> CreateTable()
+        {
+            string res = string.Empty;
+            string sp_CreateTable = "CREATE TABLE Employees (EmployeeID INT PRIMARY KEY IDENTITY(1, 1)," +
+                                    "FirstName NVARCHAR(50) NOT NULL, LastName NVARCHAR(50) NOT NULL, " +
+                                    "Email NVARCHAR(100) NOT NULL, DateOfBirth DATE NOT NULL, " +
+                                    "Salary DECIMAL NOT NULL)";
+            try
+            {
+                SqlCommand command = new (sp_CreateTable, connection);
+                await command.ExecuteNonQueryAsync();
+
+                res = "Table Employee is created.\n";
+            }
+            catch (SqlException ex)
+            {
+                res = "Error when create Table Employee. " + ex.Message + "\n";
+            }
+            return res;
+        }
+
+        async public Task<string> CreateStoredProcedure()
+        {
+            string res = string.Empty;
             string sp_Delete = @"CREATE PROCEDURE [dbo].[sp_DeleteEmployee]
                                 @EmployeeID int
                             AS
@@ -269,24 +309,25 @@ namespace EmployeeDBApp
                             ";
             try
             {
-                SqlCommand command = new SqlCommand(sp_Delete, connection);
+                SqlCommand command = new (sp_Delete, connection);
                 await command.ExecuteNonQueryAsync();
 
-                command = new SqlCommand(sp_Select, connection);
+                command = new (sp_Select, connection);
                 await command.ExecuteNonQueryAsync();
 
-                command = new SqlCommand(sp_Insert, connection);
+                command = new (sp_Insert, connection);
                 await command.ExecuteNonQueryAsync();
 
-                command = new SqlCommand(sp_Update, connection);
+                command = new (sp_Update, connection);
                 await command.ExecuteNonQueryAsync();
 
-                Console.WriteLine("Stored Procedure is adding to Database");
+                res = "Stored Procedure is adding to Database.\n";
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Error when add stored procedure. " + ex.Message);
+                res = "Error when add stored procedure. " + ex.Message + "\n";
             }
+            return res;
         }
     }
 }

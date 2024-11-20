@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmployeeDBApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9721ad7267b5d5be5d084e95b2031003307bc954")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmployeeDBApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmployeeDBApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

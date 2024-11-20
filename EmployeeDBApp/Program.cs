@@ -1,8 +1,16 @@
 ﻿using System.Data;
 using System.Text.RegularExpressions;
 
-//Строка для соединения с БД
+//Если база не создана, то используем эту строку подключения к master и в коде раскомментиуем вызов CreateDB(),
+//потом подключение меняем на уже созданную базу (см.строку подключения ниже)
+//const string connectionString = "Server = MAMA-BOOK; Database = master; Trusted_Connection = True; Encrypt = false;";
+
+//Если в базе нет таблице и хр. процедур, в коде раскомментируем CreateTable() и CreateStoredProcedure()
+//Строка для соединения с БД (MAMA-BOOK - имя сервера, EmployeeDB - имя базы,
+//Trusted_Connection = True - позволяет не создавать пользователей, а зайти под именем пользователя Windows,
+//Encrypt = false - шифрование выключено)
 const string connectionString = "Server = MAMA-BOOK; Database = EmployeeDB; Trusted_Connection = True; Encrypt = false;";
+
 int selectedMenuItem = 0; //Выбранный пункт меню
 int lastRow = 0; //Последняя позиция курсора в консоли
 bool isMainMenu = true; //Признак отображения главного меню или меню операции
@@ -30,8 +38,23 @@ Console.WriteLine("Please, wait. Сonnecting to the database...");
 EmployeeDBApp.DBConnection dBConnection = new(connectionString);
 StatusMessage = dBConnection.OpenConnection().Result;
 
-//При необходимости можно добавить в базу хранимые процедуры
-//dBConnection.CreateStoredProcedure();
+
+/*
+//Если нет БД, создаем запросом. Строка подключения должна быть к базе master
+if (dBConnection.ConnectionState() == ConnectionState.Open)
+{
+    StatusMessage = await dBConnection.CreateDB();
+}
+*/
+
+/*
+//При запуске базы EmployeeDB, можно создать запросами таблицу и процедуры, но подключение уже не к master, а к базе EmployeeDB
+if (dBConnection.ConnectionState() == ConnectionState.Open)
+{
+    StatusMessage += await dBConnection.CreateTable();
+    StatusMessage += await dBConnection.CreateStoredProcedure();
+}
+*/
 
 //Чистим консоль от предыдущих сообщений и отображаем главное меню
 Console.Clear();

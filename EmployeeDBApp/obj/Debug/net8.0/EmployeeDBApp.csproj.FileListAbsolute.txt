@@ -53,3 +53,4 @@ C:\Users\Irina\Documents\Work\EmployeeDBApp\EmployeeDBApp\obj\Debug\net8.0\refin
 C:\Users\Irina\Documents\Work\EmployeeDBApp\EmployeeDBApp\obj\Debug\net8.0\EmployeeDBApp.pdb
 C:\Users\Irina\Documents\Work\EmployeeDBApp\EmployeeDBApp\obj\Debug\net8.0\EmployeeDBApp.genruntimeconfig.cache
 C:\Users\Irina\Documents\Work\EmployeeDBApp\EmployeeDBApp\obj\Debug\net8.0\ref\EmployeeDBApp.dll
+C:\Users\Irina\Documents\Work\EmployeeDBApp\EmployeeDBApp\obj\Debug\net8.0\EmployeeDBApp.sourcelink.json
