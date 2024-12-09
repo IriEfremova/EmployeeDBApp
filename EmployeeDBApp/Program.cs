@@ -10,8 +10,7 @@ using System.Text.RegularExpressions;
 //Trusted_Connection = True - позволяет не создавать пользователей, а зайти под именем пользователя Windows,
 //Encrypt = false - шифрование выключено)
 
-const string connectionString =
-    "Server = MAMA-BOOK; Database = EmployeeDB; Trusted_Connection = True; Encrypt = false;";
+const string connectionString = "Server = MAMA-BOOK; Database = EmployeeDB; Trusted_Connection = True; Encrypt = false;";
 
 //Выбранный пункт меню
 int selectedMenuItem = 0;
