@@ -9,9 +9,11 @@ using System.Text.RegularExpressions;
 //Строка для соединения с БД (MAMA-BOOK - имя сервера, EmployeeDB - имя базы,
 //Trusted_Connection = True - позволяет не создавать пользователей, а зайти под именем пользователя Windows,
 //Encrypt = false - шифрование выключено)
+
 const string connectionString = "Server = MAMA-BOOK; Database = EmployeeDB; Trusted_Connection = True; Encrypt = false;";
 
-int selectedMenuItem = 0; //Выбранный пункт меню
+//Выбранный пункт меню
+int selectedMenuItem = 0;
 int lastRow = 0; //Последняя позиция курсора в консоли
 bool isMainMenu = true; //Признак отображения главного меню или меню операции
 string StatusMessage = ""; //Сообщение ою ошибке соединения с БД
